@@ -52,8 +52,10 @@ const SmoothScrollbarReact = forwardRef<Scrollbar, ScrollbarProps>(
 
     useEffect(() => {
       return () => {
-        scrollbar.current.removeListener(handleScroll);
-        scrollbar.current.destroy();
+        if (scrollbar.current) {
+          scrollbar.current.removeListener(handleScroll);
+          scrollbar.current.destroy();
+        }
       };
     }, []);
 
